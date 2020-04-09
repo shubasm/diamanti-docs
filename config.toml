@@ -1,0 +1,9 @@
+baseURL = "http://www.diamanti.com/"
+languageCode = "en-us"
+title = "Welcome to Diamanti!"
+theme = "hugo-theme-docdock"
+MetaDataFormat = "toml"
+paginate = 10 # optional
+copyright = "© 2020 Diamanti Inc."
+[outputs]
+home = [ "HTML", "RSS", "JSON"]

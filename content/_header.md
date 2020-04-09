@@ -1,0 +1,1 @@
+![](/img/dlogo_white.png)

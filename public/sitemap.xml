@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://www.diamanti.com/docs/cli_reference/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/docs/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/docs/getting-started/quickstart/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/docs/cli_reference/cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/docs/cli_reference/config/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/docs/copyright/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/_footer/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/_header/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.diamanti.com/tags/</loc>
+  </url>
+  
+</urlset>

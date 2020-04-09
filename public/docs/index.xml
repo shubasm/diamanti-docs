@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diamanti documentation on Welcome to Diamanti!</title>
+    <link>http://www.diamanti.com/docs/</link>
+    <description>Recent content in Diamanti documentation on Welcome to Diamanti!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020 Diamanti Inc.</copyright>
+    
+	<atom:link href="http://www.diamanti.com/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Copyright</title>
+      <link>http://www.diamanti.com/docs/copyright/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.diamanti.com/docs/copyright/</guid>
+      <description>Copyright © 2020 Diamanti. All rights reserved.
+If this guide is distributed with software that includes an end user agreement, this guide, as well as the software described in it, is furnished under license and may be used or copied only in accordance with the terms of such license. Except as permitted by any such license, no part of this guide may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, recording, or otherwise, without the prior written permission of Diamanti.</description>
+    </item>
+    
+  </channel>
+</rss>

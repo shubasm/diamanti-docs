@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Command line interface guide on Welcome to Diamanti!</title>
+    <link>http://www.diamanti.com/docs/cli_reference/</link>
+    <description>Recent content in Command line interface guide on Welcome to Diamanti!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020 Diamanti Inc.</copyright>
+    
+	<atom:link href="http://www.diamanti.com/docs/cli_reference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cluster commands</title>
+      <link>http://www.diamanti.com/docs/cli_reference/cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.diamanti.com/docs/cli_reference/cluster/</guid>
+      <description>dctl cluster Manage clusters, including creating and destroying clusters. Use also to add and remove nodes in a cluster, as well as display the status of a cluster, among other operations.
+Syntax dctl [global options] cluster &amp;lt;command&amp;gt; [command options] [arguments...]  Commands  create Create a cluster. Use only once in the lifecycle of the cluster. add Add one or more nodes to the cluster. update Update one or more nodes in the cluster.</description>
+    </item>
+    
+    <item>
+      <title>Configuration commands</title>
+      <link>http://www.diamanti.com/docs/cli_reference/config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.diamanti.com/docs/cli_reference/config/</guid>
+      <description>dctl config Generate cluster configuration files.
+Syntax dctl [global options] config &amp;lt;command&amp;gt; [command options] [arguments...]  Commands  set-cluster Set the cluster configuration. Options  --help, -h Show help dctl config set-cluster Manually generate a configuration file to access the Diamanti cluster. This command is equivalent to the dctl -s [node ip] cluster info --save command.
+Syntax dctl [global options] config set-cluster [command options] [arguments...]  Options  --api-version &amp;lt;version&amp;gt; (Required) The API version for dctl cluster configuration entry.</description>
+    </item>
+    
+  </channel>
+</rss>

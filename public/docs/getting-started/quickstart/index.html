@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Diamanti!</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-04-09T16:44:54 PDT">
+<title>Quick start guide :: Welcome to Diamanti!</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "http:\/\/www.diamanti.com\/";
+</script>
+<meta name="description" content="">
+
+
+
+    
+  </head>
+  <body data-url="/docs/getting-started/quickstart/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><img src="/img/dlogo_white.png" alt=""></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="http://www.diamanti.com/docs/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/docs/">Diamanti documentation</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://www.diamanti.com/docs/cli_reference/cluster/" class="dd-item">
+        <div>
+          <a href="/docs/cli_reference/cluster/">
+            Cluster commands
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="http://www.diamanti.com/docs/cli_reference/config/" class="dd-item">
+        <div>
+          <a href="/docs/cli_reference/config/">
+            Configuration commands
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/docs/" >
+   Diamanti documentation</option> 
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "http:\/\/www.diamanti.com\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Quick start guide</h1>
+    
+    
+    
+    <p><strong>Audience</strong></p>
+<p>This document is designed for the following users:</p>
+<ul>
+<li>
+<p>Cluster administrators</p>
+</li>
+<li>
+<p>User administrators</p>
+</li>
+<li>
+<p>Storage administrators</p>
+</li>
+<li>
+<p>Network administrators</p>
+</li>
+<li>
+<p>Developers</p>
+</li>
+</ul>
+<p>Cluster, storage, and network administrators ensure the proper deployment
+and daily operation of an organization’s IT infrastructure, including
+Diamanti D-Series appliances. Developers, meanwhile, deploy containers on
+Diamanti appliances.</p>
+<h2 id="introducing-the-diamanti-d-series-appliance">Introducing the Diamanti D-Series Appliance</h2>
+<p>Diamanti provides a hyperconverged platform for running Linux containers
+that integrates with open source software including Docker and Kubernetes.
+The D-Series appliance, along with Diamanti software, offers developers and
+administrators on-demand access to fast, predictable data services. This
+allows developers to specify I/O policies on a per-container or
+per-application basis, as needed.</p>
+<p>These policies link standard applications such as databases (for example,
+MongoDB, Cassandra, MySQL, and Kafka), networking services (such as NGINX),
+and CI/CD applications (for instance, Jenkins) with software-defined network
+and storage resources, ensuring that the I/O requirements for each
+application are fulfilled.</p>
+<p>This provides administrators with an easy-to-use, standards-based container
+platform.</p>
+<h2 id="understanding-d-series-appliance-basics">Understanding D-Series Appliance Basics</h2>
+<p>The Diamanti D-Series appliance is purpose-built for containerized
+applications that combines a hyperconverged infrastructure with the
+performance and efficiency of bare-metal containers. The Diamanti software
+provides a virtualized, clustered approach to network and storage.</p>
+<p>Together, this provides containerized workloads with guaranteed network and
+storage performance to complement the CPU and memory allocation provided by
+Linux containers. These guarantees allow more workloads to run on the same
+class of hardware without sacrificing application quality, reliability, or
+performance.</p>
+<p>Diamanti D-Series appliances assure network performance by enforcing
+performance tiers at the network interface for each container. Each
+container is guaranteed a share of available network bandwidth. Similarly,
+D-Series appliances ensure storage performance through bandwidth, IOPS, and
+latency guarantees. These guarantees are enforced in hardware, solving
+issues related to noisy neighbors in multitenancy environments.</p>
+<h3 id="introducing-diamanti-d-series-clusters">Introducing Diamanti D-Series Clusters</h3>
+<p>The Diamanti software aggregates resources from individual member nodes and
+groups the nodes into a cluster. After a Diamanti cluster is formed, a
+virtual IP address (VIP) is assigned to the cluster, which provides access
+to a single point of management.</p>
+<p>This virtual IP address is also referred to as the management IP address for
+the cluster in the</p>
+<p><em>Diamanti</em> documentation.</p>
+<p>Administrators have access to both a command line interface and an
+easy-to-use browser-based user interface to manage and monitor the cluster.</p>
+<p><strong>Note:</strong> The Diamanti D-Series cluster is built with a typical quorum size
+of three nodes.</p>
+<h3 id="exploring-container-networking">Exploring Container Networking</h3>
+<p>The Diamanti software provides centralized management of network
+configurations, which are then realized across a distributed cluster.
+Diamanti addresses application networking needs to meet both the
+connectivity and service requirements of the management network and the
+performance requirements of applications using data networks.</p>
+<p>The Diamanti software does this by providing capabilities to attach multiple
+interfaces to a single container. This approach further allows network
+administrators to maintain isolation between management and data networks.</p>
+<h5 id="container-management-network">Container Management Network</h5>
+<p>By default, the Diamanti software provides a management network for
+containers allowing service discovery. This management network is a static
+subnet (172.20.0.0/24) on each node.</p>
+<h5 id="container-data-networks">Container Data Networks</h5>
+<p>Each container can request one or more interfaces on specified data
+networks. Further, each data interface can be programmed to have a specific
+performance configuration. The Diamanti software provisions the data network
+requirements using SR-IOV NICs on the nodes.</p>
+<p>For data networking, the Diamanti software employs two related objects:
+networks and endpoints.</p>
+<h5 id="networks">Networks</h5>
+<p>Diamanti network objects comprise IP address pools from which containers can
+have IP addresses allocated. The Diamanti software provides layer 2 (L2)
+networking with VLANs.</p>
+<p>Diamanti network objects allow network administrators to configure the
+following parameters:</p>
+<ul>
+<li>
+<p>Network name, which is a user-defined string that identifies the network
+object</p>
+</li>
+<li>
+<p>Subnet for the IP address range</p>
+</li>
+<li>
+<p>IP address range</p>
+</li>
+<li>
+<p>Default gateway for the subnet (optional)</p>
+</li>
+<li>
+<p>VLAN corresponding to the subnet (which is programmed on the Top-of-Rack
+switch)</p>
+</li>
+</ul>
+<p>These parameters allow network administrators to address most network
+topologies, including the following:</p>
+<ul>
+<li>
+<p>Public networks—Required if containers need to communicate with external
+components on a different subnet. In this case, you can configure the
+gateway, as needed.</p>
+</li>
+<li>
+<p>Private networks—Available if containers do not need to communicate with
+external com- ponents, or are running in a restricted environment. In this
+case, network administrators should not configure the gateway.</p>
+</li>
+</ul>
+<p>Note that private networks allow users to reuse the same subnet in multiple
+clusters without conflict as long as the ToR switches are appropriately
+configured for the VLAN.</p>
+<h5 id="endpoints">Endpoints</h5>
+<p>Container networking is provisioned through endpoints. Endpoints associate
+container networking requirements with network objects and performance
+guarantees. Endpoints are allocated their IP address from the specified
+networks. Each endpoint uses a dedicated SR-IOV virtual function (VNIC) to
+provide networking for the container.</p>
+<p>Endpoints can be either persistent (named) or dynamic. Users need to
+explicitly create or delete persistent endpoints. Because of this,
+persistent endpoints are suitable for services that require a fixed IP
+address. Dynamic endpoints, in contrast, are created when a pod is created,
+and deleted automatically when the pod is deleted.</p>
+<p><strong>Note:</strong> MAC addresses are automatically assigned without the need for user
+configuration.</p>
+<h3 id="exploring-storage">Exploring Storage</h3>
+<p>The Diamanti software includes an advanced distributed volume manager that
+pools storage from drives available on all appliances in the cluster.</p>
+<p>Each volume uses dedicated SR-IOV virtual function to provide storage for
+the container.</p>
+<h5 id="diamanti-converged-file-system">Diamanti Converged File System</h5>
+<p>Diamanti Converged File System (DCFS) is the distributed storage component
+of the Diamanti cluster. DCFS consists of a highly-available and distributed
+control plane that scales linearly when the number of nodes in the cluster
+increases.</p>
+<p>DCFS provides application-centric storage features that include mirroring,
+remote I/O, snapshots, and more. DCFS is network aware and automatically
+reserves network bandwidth as needed to maintain application quality of
+service. DCFS is flash media aware and designed for higher flash endurance
+and predictable I/O latency.</p>
+<h5 id="volumes">Volumes</h5>
+<p>Volumes of various sizes can be created from the distributed storage pool on
+demand. When a volume is created, the Diamanti scheduler automatically picks
+an optimum node on which to create the volume.</p>
+<h5 id="remote-volumes">Remote Volumes</h5>
+<p>Volumes created on a node are accessible by other nodes using the Ethernet
+fabric. These remotely accessed volumes are referred to as <em>remote volumes</em>.</p>
+<p>Note that the Diamanti scheduler prefers local volumes and attempts to place
+containers on the nodes where the volumes are located.</p>
+<h5 id="mirrored-volumes">Mirrored Volumes</h5>
+<p>Volumes can be created to have mirrored copies on nodes (up to three
+copies). This ensures that there is no loss of data if a node or drive
+fails.</p>
+<h5 id="snapshots">Snapshots</h5>
+<p>A snapshot represents a point-in-time image of the corresponding volume
+data. Diamanti snapshots are read-only. Users need to create a volume from a
+snapshot to consume snapshot data.</p>
+<h5 id="linked-clones">Linked Clones</h5>
+<p>Volumes created from Diamanti snapshots are called linked clones of the
+parent volume. Linked clones share data blocks with the corresponding
+snapshot until the linked clone blocks are modified. Linked clones can be
+attached to any node in the cluster for consumption.</p>
+<h5 id="dynamic-provisioning">Dynamic Provisioning</h5>
+<p>The Diamanti software offers a dynamic provisioner for Kubernetes, allowing
+storage administrators to dynamically provision storage volumes. Dynamic
+provisioning uses the concept of storage classes, which enables storage
+administrators to define classes of storage for use with varying application
+requirements.</p>
+<h3 id="understanding-namespaces">Understanding Namespaces</h3>
+<p>The Diamanti software supports multiple virtual clusters backed by the same
+physical cluster. These virtual clusters are called namespaces. Namespaces
+are helpful in environments with many users spread across multiple teams or
+projects. In this case, namespaces provide a private workspace for each team
+or deployment.</p>
+<p>Namespaces do this by enforcing a scope for names. When using namespaces,
+names of resources need to be unique within a namespace, but not across
+namespaces. In this way, namespaces allow cluster administrators to divide
+cluster resources between multiple uses.</p>
+<h3 id="understanding-performance-tiers">Understanding Performance Tiers</h3>
+<p>The Diamanti software allows users to run applications using different
+performance tiers based on specific service-level agreement (SLA)
+requirements. By default, the Diamanti software offers three predefined
+performance tiers. Cluster administrators can add new performance tiers, up
+to a total of eight, based on user requirements.</p>
+<h3 id="user-access-management">User Access Management</h3>
+<p>The Diamanti software provides built-in role-based access control (RBAC) to
+regulate access to resources within the environment, providing a streamlined
+and secure mechanism to perform cluster, container, and user administration.
+The Diamanti software offers several built-in roles and</p>
+<p>groups to cover the most common administrative tasks. Cluster administrators
+can also create custom groups to match specific needs, as well as define
+users within the cluster.</p>
+<p>The Diamanti software also supports the namespaces construct in Kubernetes
+to manage access to application and service-related Kubernetes objects.
+These objects include pods, services, replication controllers, deployments,
+and other objects that are created in namespaces.</p>
+<p>Diamanti roles are expressed using the following format:</p>
+<p>&lt;class-&lt;qualifier[/&lt;namespace]</p>
+<p>where &lt;class\ refers to the object type (such as container, network, or
+node, among others),</p>
+<p>&lt;qualifier\ specifies the permitted operations (view or edit), and
+&lt;namespace\ identifies the namespace to which the role applies.</p>
+<p>For example, built-in roles include network-edit and container-edit/project,
+among others.</p>
+<p>Cluster administrators can configure additional RBAC privileges for
+Kubernetes objects using Kubernetes role and role bindings. Diamanti
+built-in roles and bindings are identified using the label
+diamanti.com/created-by. Custom roles and bindings must use a different
+label.</p>
+<h3 id="kubernetes">Kubernetes</h3>
+<p>The D-Series appliance is packaged with a certified version of Kubernetes
+(version 1.12.3). The Diamanti network CNI plug-in and the storage plug-in
+(via Flex-volume/CSI) are pre-integrated and tested with the Kubernetes
+distribution.</p>
+<p><strong>Note:</strong> Do not upgrade the Kubernetes software independently. The
+Kubernetes software is upgraded, if necessary, as part of the Diamanti
+software upgrade process.</p>
+<p>For more information on Kubernetes and supported features, refer to the
+Kubernetes documentation.</p>
+<h1 id="managing-the-d-series-appliance">Managing the D-Series Appliance</h1>
+<p>This chapter describes how to manage the Diamanti D-Series appliance. The
+chapter begins with an overview of how to deploy the Diamanti D-Series
+appliance, and then provides detailed instructions about how to cluster
+multiple D-Series appliances.</p>
+<p>The chapter further explains how to monitor and manage the cluster, as well
+as how to manage groups of users. The chapter then provides information
+about managing key Diamanti objects including performance tiers, networks,
+endpoints, and storage. The chapter also describes how to monitor the health
+of the D-Series appliance.</p>
+<p>The chapter concludes by showing how to deploy workloads as containers using
+Kubernetes pod definitions, and how to use Kubernetes commands to run,
+monitor and delete pods.</p>
+<h2 id="deploying-the-d-series-appliance">Deploying the D-Series Appliance</h2>
+<p>Deploying the Diamanti D-Series appliance is a quick and simple process that
+involves the following steps:</p>
+<ul>
+<li>
+<p>Becoming familiar with the Diamanti D-Series package contents and collecting
+the neces- sary hardware and configuration information</p>
+</li>
+<li>
+<p>Physically installing the D-Series appliance in the data center</p>
+</li>
+<li>
+<p>Configuring the D-Series appliance to prepare it to join a cluster</p>
+</li>
+</ul>
+<p>For more information about deploying a Diamanti D-Series appliance, refer to
+the <em>Diamanti D- Series Installation Guide</em>.</p>
+<h2 id="clustering-d-series-appliances">Clustering D-Series Appliances</h2>
+<p>Cluster administrators can create a cluster of D-Series appliances using the
+Diamanti software, and add or remove nodes in the cluster as needed. After a
+cluster is formed, the Diamanti software pools resources across all nodes in
+the cluster, enabling Kubernetes to efficiently schedule containers within
+the cluster.</p>
+<p><strong>Note:</strong> Complete the <em>Diamanti Cluster Preparation Checklist</em>, available
+in the <em>Diamanti D-Series Installation Guide</em>, before configuring a cluster.</p>
+<p>Cluster administrators interact with the Diamanti software using the
+Diamanti command line interface (CLI), which provides a set of commands to
+manage Diamanti D-Series clusters, nodes (appliances), storage volumes,
+networks, and more. In contrast, users employ standard Kubernetes commands
+to manage pods, containers, and other Kubernetes resources in the cluster.</p>
+<p>Use the Diamanti command line tool dctl (Linux and Mac OS X) and dctl.exe
+(Windows) to issue Diamanti commands, and use the Kubernetes command line
+tool kubectl (Linux and Mac OS X) and kubectl.exe (Windows) to issue
+Kubernetes commands.</p>
+<p>Diamanti refers to these tools as dctl and kubectl respectively throughout
+the documentation.</p>
+<p>Diamanti strongly recommends running these tools on a local Linux, Windows,
+or Mac OS X workstation. Users can download the Diamanti tools to run the
+Diamanti CLI on a local machine. For more information about downloading the
+tools, refer to the <em>Diamanti D-Series User Interface Guide</em>.</p>
+<h3 id="preparing-to-cluster-appliances">Preparing to Cluster Appliances</h3>
+<p>Before creating a cluster, ensure that the host names and cluster name have
+DNS entries for the corresponding domain. If these DNS entries are not
+present (and therefore cannot be resolved by nodes), attempts to create the
+cluster will fail.</p>
+<p>To verify that the host names and cluster name have DNS entries, do the
+following:</p>
+<ol>
+<li>
+<p>Using a console monitor, log in to the node.</p>
+</li>
+<li>
+<p>Confirm that nameserver entries are correctly configured using the following
+command:</p>
+</li>
+</ol>
+<p>$ cat /etc/resolv.conf</p>
+<p>The resolv.conf file typically contains directives that specify the default
+search domains along with the list of IP addresses of nameservers available
+for resolution.</p>
+<ol>
+<li>Perform a DNS query to test the address mapping of a well-known site. For
+example:</li>
+</ol>
+<p><code>\$ nslookup google.com</code></p>
+<h3 id="creating-a-cluster">Creating a Cluster</h3>
+<p>To create a secure cluster, cluster administrators need to specify the
+virtual IP address for the cluster, the DNS sub-domain, the VLAN used for
+intra-cluster storage communication, an admin user password for the cluster,
+the certificate authority for the cluster, and the TLS certificate and
+private key for the cluster.</p>
+<p>All commands, except the dctl cluster create command, require administrators
+to be logged into the cluster (using the dctl login command).</p>
+<p>Use the following command:</p>
+<p>The following describes the command parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--admin-password &lt;password\ -p &lt;password\</td>
+<td>The password for the admin user. If a password is not specified in the command line, the command prompts for a password.</td>
+</tr>
+<tr>
+<td>-c &lt;path-to-config-file\</td>
+<td>The path to the cluster creation configuration file con- taining the cluster name, admin user password, certifi- cate authority, server private key, storage VLAN, virtual IP address, and list of nodes.</td>
+</tr>
+<tr>
+<td>--ca-cert value &lt;path-to-certificate\</td>
+<td>The certificate authority for the cluster.</td>
+</tr>
+<tr>
+<td>&lt;cluster-name\</td>
+<td>The name of the cluster.</td>
+</tr>
+<tr>
+<td>&lt;dns-name\</td>
+<td>The DNS (short) name of the node.</td>
+</tr>
+<tr>
+<td>--poddns &lt;cluster-name[.company .domain]</td>
+<td>The domain name for the DNS service for all contain- ers deployed in the cluster. The default is domain.com.</td>
+</tr>
+<tr>
+<td>-s &lt;node-name | node-ip-address\</td>
+<td>The DNS (short) name or IP address of the Diamanti server that is a member of the cluster. Use when run- ning the command from a Linux, Windows, or Mac- based machine.</td>
+</tr>
+<tr>
+<td>--storage-vlan [vlan-id] &ndash;svlan [vlan-id]</td>
+<td>The virtual LAN ID (for intra-cluster storage communi- cation, with jumbo frames enabled). The default value is 0 (disabled).</td>
+</tr>
+<tr>
+<td>--tls-cert value &lt;path-to-certificate\</td>
+<td>The TLS certificate for the cluster.</td>
+</tr>
+<tr>
+<td>--tls-key value &lt;path-to-key-file\</td>
+<td>The TLS private key for the cluster.</td>
+</tr>
+<tr>
+<td>--vip &lt;cluster-virtual-ip\ &ndash;virtual-ip &lt;cluster-virtual-ip\</td>
+<td>The IP address for managing the cluster.</td>
+</tr>
+</tbody>
+</table>
+<p>The password needs to meet the Unicode standard, and must consist of at
+least 8 characters, including at least one special character, one upper and
+lowercase character, and one number.</p>
+<p>See Appendix A for an example of a configuration file.</p>
+<p>The command defaults to 127.0.0.1 if the node IP address is not specified.
+Therefore, the node IP address is not required when the command is run on a
+node that is part of the cluster.</p>
+<p>For example:</p>
+<pre><code> NAME NODE-STATUS K8S-STATUS MILLICORES MEMORY STORAGE IOPS VNICS BANDWIDTH SCTRLS LABELS
+ LOCAL, REMOTE 
+ appserv76 0/0 0/0 0/0 0/0 0/0 0/0
+ 0/0, 0/0 &lt;none&gt;
+ appserv77 0/0 0/0 0/0 0/0 0/0 0/0
+ 0/0, 0/0 &lt;none&gt;
+ appserv78 0/0 0/0 0/0 0/0 0/0 0/0
+ 0/0, 0/0 &lt;none&gt;
+
+</code></pre><p><strong>Note:</strong> Do not add spaces or other whitespace characters when specifying
+the list of nodes (using DNS short names).</p>
+<p>The dctl cluster create command automatically adds an administrative user
+named ‘admin’.</p>
+<p>Using the default quorum size of three nodes, the first three nodes
+specified in the</p>
+<p>dctl cluster create command become quorum nodes by default.</p>
+<h3 id="logging-in-to-the-cluster">Logging in to the Cluster</h3>
+<p>Users need to be logged in to the cluster before performing CLI operations.
+There are two ways to log in to a cluster:</p>
+<ul>
+<li>
+<p>Insecure mode—Use when user-supplied certificates were used to create the
+cluster and the certificate authority (ca.crt) is not available for the
+user. This allows the user to config- ure dctl to ignore server certificate
+validation. This is the default login mode.</p>
+</li>
+<li>
+<p>Kubernetes proxy mode—In certain environments (such as with an SSL
+passthrough load- balancer), kubectl commands are not properly relayed to
+the API server causing kubectl commands to fail with an error message. In
+these cases, use the proxy option, which relays kubectl commands through the
+Diamanti server.</p>
+</li>
+</ul>
+<p>Use the following command to log in to the Diamanti cluster:</p>
+<p><code>dctl [-s \&lt;cluster-vip \| cluster-dns-name\] login</code></p>
+<p>Users are prompted for the user name and the password. For example:</p>
+<p>After successfully logging in to the cluster, the dctl login command creates
+a D-Series cluster session cookie in the .dctl.d directory. Note that this
+cookie is deleted when users log out using dctl logout command.</p>
+<p>The dctl login command also creates a .kube/config file that contains the
+Kubernetes cookie together with the context of the D-Series cluster. Users
+can interact with the Kubernetes API Server after this information is
+available.</p>
+<p>Users can determine the identity of the user currently logged in using the
+following command:</p>
+<p><code> dctl whoami</code></p>
+<p>For example:</p>
+<p>To log out of the cluster, use the following command:</p>
+<p><code>\$ dctl logout</code></p>
+<h5 id="cli-configuration-management">CLI Configuration Management</h5>
+<p>After successfully logging in to the cluster, the dctl login command creates
+D-Series cluster session cookies, which are deleted when users log out using
+the dctl logout command. The dctl login command also creates Kubernetes
+session tokens that contain the Kubernetes cookie together with the context
+of the D-Series cluster.</p>
+<p>These session tokens are stored under the home directory in the following
+files:</p>
+<table>
+<thead>
+<tr>
+<th><strong>File</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~/.dctl.d/cookies</td>
+<td>Diamanti session cookies</td>
+</tr>
+<tr>
+<td>~/.kube/config</td>
+<td>Kubernetes session tokens</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> The user session tokens expire in one hour.</p>
+<p>Users can specify alternative locations for these configuration files using
+the following commands:</p>
+<p>For example:</p>
+<p><strong>Note:</strong> If you export DCTL_CONFIG, you need to also export KUBECONFIG as
+shown above.</p>
+<p>When destroying the cluster, users should remove the corresponding folders
+on the machine before using the Diamanti CLI (dctl commands) again.</p>
+<h3 id="monitoring-and-managing-the-cluster">Monitoring and Managing the Cluster</h3>
+<p>After creating the cluster and logging in to it, users can monitor the
+cluster status, add more nodes to the cluster, label nodes, and more.</p>
+<p>Use the following command to display the status of the cluster:</p>
+<p><code>dctl cluster status</code></p>
+<p>For example:</p>
+<pre><code>   \$ dctl cluster status
+
+   Name : production-cluster
+
+   UUID : efbe3403-661d-11e9-aff6-2c600c82ec99
+
+   State : Created
+
+   Version : 2.3.0 (108)
+
+   Master : appserv3
+
+   Etcd State : Healthy
+
+   Virtual IP : 172.16.19.21
+
+   Storage VLAN : 402
+
+   Pod DNS Domain : cluster.local
+
+
+   NAME NODE-STATUS K8S-STATUS MILLICORES MEMORY STORAGE IOPS VNICS BANDWIDTH
+   SCTRLS LABELS
+
+   LOCAL, REMOTE
+
+   appserv2/(etcd) Failed Good 0/32000 1GiB/64GiB 200.54GB/3.05TB 185K/500K
+   20/63 4.63G/40G 20/64, 0/64
+
+   beta.kubernetes.
+   io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=appserv2
+   appserv3/(master, etcd) Good Good 250/32000 1.06GiB/ 64GiB 258.36GB/3.05TB
+   185K/500K 25/63 4.63G/40G 21/64, 0/64
+
+   beta.kubernetes.
+   io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=appserv3
+   appserv4/(etcd) Good Good 0/32000 1GiB/64GiB 1.07TB/3.05TB 185K/500K 24/63
+   4.63G/40G 20/64, 0/64
+
+   beta.kubernetes.
+   io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=appserv4
+
+</code></pre><p>Use the following command to add one or more nodes to a cluster:</p>
+<p><code>dctl cluster add \&lt;dns-name\,[\&lt;dns-name\,...]</code></p>
+<p>For example:</p>
+<p><code>\$ dctl cluster add host1,host2</code></p>
+<p><strong>Important:</strong> Do not add spaces or other whitespace characters when
+specifying the list of nodes (using DNS short names).</p>
+<p>Similarly, use the following command to remove one or more nodes from a
+cluster:</p>
+<p>dctl cluster remove &lt;dns-name,[&lt;dns-name,&hellip;]</p>
+<p>For example:</p>
+<p><code>\$ dctl cluster remove host1</code></p>
+<p>You are prompted for confirmation.</p>
+<p>Use the following command to add a label to a node:</p>
+<p><code>dctl node label \&lt;node-name\ \&lt;label\</code></p>
+<p>For example:</p>
+<h3 id="managing-user-groups">Managing User Groups</h3>
+<p>The Diamanti software uses role-based access control (RBAC) to regulate
+access to resources within the environment. As part of this system, Diamanti
+D-Series appliances employ the following related concepts:</p>
+<ul>
+<li>
+<p>Users—People who can perform tasks within the environment.</p>
+</li>
+<li>
+<p>Roles—Collections of functions that users can perform. Within the Diamanti
+software, these functions are defined as methods that can act on objects
+within the system. There is a fixed set of predefined roles that cannot be
+changed.</p>
+</li>
+<li>
+<p>Groups—Collections of users that assume the same role within the system.
+User groups define the privileges that users are assigned in the system.</p>
+</li>
+</ul>
+<p>Users can belong to multiple groups, and groups can have multiple roles.</p>
+<p>The Diamanti software offers built-in roles and groups to cover the most
+common administrative tasks. Cluster administrators can also create custom
+groups to match specific needs, as well as define users within the cluster.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Object</strong></th>
+<th><strong>Name</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User</td>
+<td>admin</td>
+<td>Belongs to the cluster-admin group.</td>
+</tr>
+<tr>
+<td><strong>Object</strong></td>
+<td><strong>Name</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>Group</td>
+<td>cluster-admin</td>
+<td>Has edit and view privileges for Diamanti resources including containers, volume claims, net- works, nodes, performance tiers, and volumes. Note that this group offers full privileges in Kubernetes.</td>
+</tr>
+<tr>
+<td></td>
+<td>container-admin</td>
+<td>Has edit privileges for contain- ers in the default namespace and view privileges for Diamanti resources including networks, nodes, performance tiers, and volumes.</td>
+</tr>
+<tr>
+<td></td>
+<td>user-admin</td>
+<td>Has view and edit privileges for users, group, and authentication servers.</td>
+</tr>
+</tbody>
+</table>
+<p>Cluster administrators generally perform the following tasks:</p>
+<ul>
+<li>
+<p>Manage the cluster configuration</p>
+</li>
+<li>
+<p>Monitor container deployments</p>
+</li>
+<li>
+<p>Monitor hosts, volumes, and networks</p>
+</li>
+<li>
+<p>Monitor and manage common operations of the IT infrastructure, including
+Diamanti D- Series appliances</p>
+</li>
+</ul>
+<p>Use the following command to display the list of roles associated with the
+user:</p>
+<p>Use the following command to create a new group with role based access
+control:</p>
+<p>Use the following command to get details about a particular group:</p>
+<p>Use the following command to create a new user and add the user to multiple
+user groups:</p>
+<p>User names need to be in the following format: user@domain.</p>
+<h5 id="performing-authentication">Performing Authentication</h5>
+<p>Local users can be authenticated, as shown in the following example:</p>
+<h5 id="using-ldap-authentication">Using LDAP Authentication</h5>
+<p>Users can be authenticated through an external LDAP server. The following
+shows an example of remote user authentication:</p>
+<h3 id="managing-performance-tiers">Managing Performance Tiers</h3>
+<p>Administrators can configure the Diamanti software to enforce minimum
+network throughput and storage IOPS for containers, offering deterministic
+high performance with high workload density. While the configuration is
+completed globally across the cluster, each node in the cluster enforces the
+specified performance tier for all workloads running on the node.</p>
+<p>The following table outlines the three built-in performance tiers in a
+Diamanti cluster:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Performance Tier</strong></th>
+<th><strong>Storage IOPS</strong></th>
+<th><strong>Network Bandwidth</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>high</td>
+<td>20K IOPS</td>
+<td>500 Mbps</td>
+</tr>
+<tr>
+<td>medium</td>
+<td>5K IOPS</td>
+<td>125 Mbps</td>
+</tr>
+<tr>
+<td>best-effort</td>
+<td>No minimum</td>
+<td>No minimum</td>
+</tr>
+</tbody>
+</table>
+<p>Administrators can create new performance tiers to match application
+requirements using the Diamanti CLI. Administrators can define five
+additional performance tiers (for a total of eight tiers). Administrators
+cannot modify or delete the default built-in performance tier “best-effort.”
+If a performance tier is not specified, the default is “best-effort.”</p>
+<p>Diamanti performance tiers represent guaranteed minimum performance.
+Performance maximums are not enforced. Higher performance workloads are
+prioritized over “best-effort” workloads.</p>
+<p>Use the following command to create a performance tier:</p>
+<p>For example:</p>
+<p><code> \$ dctl perf-tier create performance-tier1 -i 1K -b 1G</code></p>
+<p>Use the following command to delete a performance tier:</p>
+<p><code>dctl perf-tier delete \&lt;performance-tier-name\</code></p>
+<p><strong>Note:</strong> You cannot delete the “best-effort” performance tier.</p>
+<h3 id="managing-networks">Managing Networks</h3>
+<p>The Diamanti software enables you to manage networks as objects. A network
+object consists of an IP address range, the subnet, the VLAN associated with
+the subnet, and the default gateway.</p>
+<p>Containers can connect to multiple networks using endpoints. The endpoint
+specifies the network object and the performance tier to be used by the
+container.</p>
+<p>Use the following command to create a network:</p>
+<p>The following table describes the command options:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;network-name\</td>
+<td>The name of the network.</td>
+</tr>
+<tr>
+<td>--subnet &lt;subnet/class\</td>
+<td>The subnet for the network. The command defaults to the subnet you have already specified, though you can change the value, as required.</td>
+</tr>
+<tr>
+<td>--start &lt;ip-range-start\</td>
+<td>The starting address of the range of IP addresses to allocate to con- tainers on the network.</td>
+</tr>
+<tr>
+<td>--end &lt;ip-range-end\</td>
+<td>The final address of the range of IP addresses to allocate to containers on the network.</td>
+</tr>
+<tr>
+<td><strong>Parameter</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>--gateway &lt;gateway\</td>
+<td>The IP address of the gateway. The command defaults to the gateway you have already specified, though you can change the value, as required.</td>
+</tr>
+<tr>
+<td>--vlan &lt;vlan-id\</td>
+<td>The ID of the virtual LAN on which the subnet should be placed based on your network configuration.</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<p>You can verify that the network was successfully created with the attributes
+you specified using the following command:</p>
+<p><code>\$ dctl network list</code></p>
+<p>After creating a network, you can include the network by name in your pod
+definition files. The following highlights the relevant section of the pod
+definition file containing the network specification:</p>
+<p>The example shows an optional performance tier assigned to the interface to
+enforce guaranteed performance.</p>
+<p>Diamanti software requires that all performance tier settings within a
+single pod definition file be identical. In other words, all network
+interfaces and storage volumes should be set to the same performance tier.
+If a performance tier is not specified, the Diamanti software assumes “best-
+effort.”</p>
+<p>To delete a network from your Diamanti cluster, use the following command:</p>
+<p>You can only delete networks that are not being used. You are prompted to
+confirm the delete operation.</p>
+<p>For example, the following command removes the “northbound” network that you
+created earlier:</p>
+<h3 id="managing-endpoints">Managing Endpoints</h3>
+<p>The Diamanti software enables you to provision container networking through
+endpoints that associate container networking requirements with network
+objects and performance tiers.</p>
+<p>Endpoints can be either dynamic or persistent.</p>
+<p>Dynamic endpoints are created automatically when a pod is scheduled, and are
+deleted when the pod terminates. These endpoints are consumed by a single
+pod/service, and are specified inside the pod definition file, as shown in
+the following:</p>
+<p>Persistent endpoints are named and can have either an IP address assigned
+automatically or have an IP address explicitly assigned. Use the following
+command to create a persistent endpoint, automatically assign an IP address,
+and assign the endpoint to a namespace:</p>
+<p><code>dctl endpoint create \&lt;endpoint-name\ -n \&lt;network-name\ -ns \&lt;namespace\</code></p>
+<p>For example:</p>
+<p>Alternatively, use the following command to create a persistent endpoint and
+explicitly assign an IP address:</p>
+<p><code>dctl endpoint create \&lt;endpoint-name\ -n \&lt;network-name\ -i \&lt;ip-address\</code></p>
+<p>For example:</p>
+<p>Persistent endpoints are similarly consumed by a single pod/service, and are
+specified inside the pod definition file, as shown in the following:</p>
+<p>To list the defined endpoints, use the following command:</p>
+<p><code>dctl endpoint list</code></p>
+<p>To show detailed information about a specific endpoint, use the following
+command:</p>
+<p><code>dctl endpoint get \&lt;endpoint-name\</code></p>
+<p>Use the following command to delete a persistent endpoint:</p>
+<p><code>dctl endpoint delete \&lt;endpoint-name\</code></p>
+<p>For example:</p>
+<p><code>\$ dctl endpoint delete mysqlep</code></p>
+<p>Each pod has a management network interface and, optionally, multiple data
+network endpoints. The management network provides connectivity from pods to
+nodes, the Kubernetes service, DNS, and more. Management network
+provisioning is automatic, but you are responsible for specifying the data
+endpoints.</p>
+<h3 id="managing-storage">Managing Storage</h3>
+<p>The Diamanti software enables you to create and attach multiple storage
+volumes to a container and optionally guarantee minimum throughput using
+selected performance tiers.</p>
+<p>Use the following command to create a storage volume:</p>
+<p><code>dctl volume create \&lt;volume-name\ -s \&lt;size\</code></p>
+<p>For example:</p>
+<p><code>\$ dctl volume create mongo-vol -s 20G</code></p>
+<p>This creates a new volume called mongo-vol allocating 20GB of storage.</p>
+<p>After creating the storage volume, you need to modify the pod definition
+file to instruct the appropriate container to use the volume. For example,
+you could use the volume created in this section by adding the text in bold
+below:</p>
+<p>The example shows an optional performance tier assigned to the volume to
+enforce guaranteed performance. You can also specify a placement constraint
+using the &ndash;sel=&lt;label\ option to create a volume on a specific node or on
+a node with specific characteristics.</p>
+<p>Diamanti software requires that all performance tier settings within a
+single pod definition file be identical.</p>
+<p>In other words, all network interfaces and storage volumes should be set to
+the same performance tier. If a performance tier is not specified, the
+Diamanti software assumes “best-effort.”</p>
+<p>The previous example also shows how to configure the detach policy for a
+volume using the</p>
+<p>detachPolicy option. The detach policy specifies whether a mirrored or
+remote volume can be</p>
+<p>detached automatically when an initiator node is not reachable. Note that
+detaching a volume automatically can lead to data loss under certain network
+partitioning conditions; use this option with care.</p>
+<p>The following settings are available for the detachPolicy option:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto</td>
+<td>(Default) The volume is force detached automatically when the initia- tor node is not reachable and the corresponding pod is evicted. This enables the workload to be moved to a different node automatically without requiring user intervention to force detach volumes. Note that pods are evicted after five minutes when a node is not reachable or fails.</td>
+</tr>
+<tr>
+<td>Manual</td>
+<td>This is the default setting, in which volumes are not detached auto- matically when an initiator node is unreachable (even when the corre- sponding pod is evicted). Use this setting when the combination of pod eviction and a node being unreachable does not imply that the corresponding pods have to stop running immediately. In this case, since the pod might still be using the volume, an automatic force detach on the initiator could lead to data loss. Note that you can always override this setting and manually force detach volumes, as needed.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="persistentvolume-and-persistentvolumeclaim">PersistentVolume and PersistentVolumeClaim</h5>
+<p>The Diamanti software supports PersistentVolume (PV) and
+PersistentVolumeClaim (PVC). A PersistentVolume is storage that has been
+provisioned by an administrator and has a lifecycle independent of any
+individual pod that uses the PV.</p>
+<p>A PersistentVolumeClaim (PVC) is a request for storage by a user. PVCs
+consume PV resources, with a claim requesting a specific size and access
+mode. Volumes persist across container failures and restarts.</p>
+<p>Each PV contains a spec and status, which is the specification and status of
+the volume. For example:</p>
+<p>Similarly, each PVC contains a spec and status, which is the specification
+and status of the claim. For example:</p>
+<p>The following example shows how to specify a PVC in a pod definition file:</p>
+<p>The volumeMounts name value must be the same as the volumes name setting.
+Also, Kubernetes requires that the volumeMounts name value must be unique
+within a node (and preferably across the cluster).</p>
+<h5 id="dynamic-provisioning-1">Dynamic Provisioning</h5>
+<p>You can specify the dynamic provisioning of volumes, in which volumes are
+dynamically created and optionally deleted on request. To use dynamic
+provisioning, you begin by creating a storage class that specifies the name,
+file system type, performance tier, mirror count, and provisioner, as shown
+in the following example:</p>
+<p>In this case, the provisioner is diamanti.com/default-provisioner.</p>
+<p>The dynamic provisioner uses the storage classes you have defined to create
+requested volumes dynamically when a user creates a PVC (specifying the
+volume size and storage class), as shown in the following:</p>
+<h5 id="mirroring">Mirroring</h5>
+<p>The Diamanti software additionally supports mirroring (up to three-way
+mirrors). Each mirror or plex exists on a single node. The Diamanti
+scheduler auto selects and spreads the mirrors on different nodes in the
+cluster. You can also optionally override this auto-selection using a
+selector.</p>
+<p>Use the following command to create a mirrored volume:</p>
+<p>dctl volume create &lt;volume-name\ -s &lt;size\ -m &lt;mirror-count\</p>
+<p>For example:</p>
+<p>This creates a three-way mirrored volume.</p>
+<p>Use the following command to display the number of nodes for a volume:</p>
+<p>dctl volume describe &lt;volume-name\</p>
+<p>For example:</p>
+<table>
+<thead>
+<tr>
+<th>vol1.p0</th>
+<th>appserv1</th>
+<th>Up</th>
+<th>Detached</th>
+<th>InSync</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vol1.p1</td>
+<td>appserv2</td>
+<td>Up</td>
+<td>Detached</td>
+<td>Detached</td>
+</tr>
+<tr>
+<td>vol1.p2</td>
+<td>appserv3</td>
+<td>Up</td>
+<td>Detached</td>
+<td>Detached</td>
+</tr>
+</tbody>
+</table>
+<p>You can add another mirror to volumes with one or two mirrors (one mirror at
+a time) using the following command:</p>
+<p>dctl volume modify &lt;volume-name\ -m &lt;new-mirror-count\</p>
+<p>Similarly, you can delete a mirror (plex) associated with a volume using the
+following command:</p>
+<p>dctl volume plex-delete &lt;volume-name\ p&lt;plex-number\</p>
+<p>For example:</p>
+<p>dctl volume plex-delete vol1 p1</p>
+<p>You can delete storage volumes that are no longer needed. Recall that
+persistent volumes persist across container failures and restarts.</p>
+<p>Use the following command to delete a storage volume:</p>
+<p>dctl volume delete &lt;volume-name\</p>
+<p>For example:</p>
+<p>$ dctl volume delete mongo-vol</p>
+<p><strong>Note:</strong> You cannot delete a volume that is in use. Also, deleting a volume
+is an irrevocable action. Exercise care when deleting a storage volume.</p>
+<p>Diamanti software periodically monitors all volumes and checks for active
+volumes in degraded state. Degraded state is an indication that one or more
+plexes in the volume are in Detached condition. If any are found, Diamanti
+software tries to auto attach the plex if the node on which the plex resides
+and corresponding storage links are in good condition.</p>
+<p>The auto-attach frequency is configured in the /etc/diamanti/convoy.conf
+file using the following parameter:</p>
+<p>DIAMANTI_PLEX_AUTO_ATTACH_INTERVAL</p>
+<p>The default value is 30 minutes. Diamanti software attempts to attach the
+detached plexes three times within this configured interval. If the plex
+attach is not successful, it is scheduled again for after the configured
+interval. Note that changes to this interval requires that you restart the
+convoy service on the master node.</p>
+<h2 id="monitoring-health">Monitoring Health</h2>
+<p>The Diamanti D-Series appliance is a sophisticated platform with multiple
+hardware and software components. Administrators need to regularly monitor
+the health of D-Series nodes in the cluster. If a node is unhealthy, new
+pods are not scheduled to run on the node.</p>
+<p>The Diamanti software automatically corrects most transient issues and
+restores nodes to a healthy status. However, certain hardware or software
+issues can cause the node to remain unhealthy for extended periods of time.</p>
+<p>Administrators can monitor node status using the Nodes tab in the Diamanti
+UI. Administrators can also use the following commands to display the node
+health status:</p>
+<h3 id="monitoring-events">Monitoring Events</h3>
+<p>The Diamanti software displays a list of events that you can use to monitor
+and manage resources in the cluster. You can also configure policies to
+specify the number of days to retain events and enable SNMP traps, as
+required.</p>
+<p>Use the following command to display events:</p>
+<p><code>$ dctl event list</code></p>
+<p>By default, the 50 most recent events are displayed. You can use command
+options to list up to 1000 events, and optionally specify an offset allowing
+you to page through a larger number of events. You can also filter events by
+node, pod, or volume.</p>
+<p>Use the following command to configure event policies:</p>
+<pre><code>   dctl event configure --retention-days &lt;n&gt;
+   --snmp-community “&lt;string&gt;” --snmp-enable=&lt;true|false&gt;
+   --snmp-receiver=&lt;ip-address-1[,ip-address-2,ip-address-3]&gt;
+   $ dctl
+
+</code></pre><p>For example:</p>
+<p><code>$ dctl event configure --retention-days 60 --snmp-enable=true --snmp-receiver=192.168.0.111</code></p>
+<p>This command configures an event policy enabling SNMP traps with 60 day
+retention for events. The following shows how to configure multiple SNMP
+receivers:</p>
+<p>Finally, you can display the current event configuration using the following
+command:</p>
+<p><code>dctl event status</code></p>
+<h2 id="deploying-workloads">Deploying Workloads</h2>
+<p>After creating Diamanti network and storage objects, you can deploy
+workloads as containers using Kubernetes pod definitions. For more
+information about deploying workloads, refer to <em>Diamanti D-Series Technical
+Note: Exploring Appliance Capabilities</em>.</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/docs/getting-started/" title="Diamanti D-Series quick start guide"> <i class="fa fa-chevron-left"></i><label>Diamanti D-Series quick start guide</label></a>
+    <a class="nav nav-next" href="/docs/copyright/" title="Copyright" style="margin-right: 0px;"><label>Copyright</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    <p>Copyright © 2020 Diamanti. All rights reserved.</p>
+
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
