@@ -1,0 +1,164 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: lighter;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+html * {
+  font-family: "ff-din-web-pro-1", "ff-din-web-pro-2", sans-serif;
+  font-size: 14px;
+  font-weight: lighter;
+  line-height: 19.2px;
+  color-profile: sRGB;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 30px;
+  page-break-before: always;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 30px;
+  page-break-before: always;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 25px;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 23px;
+  margin-top: 10px;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 23px;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+h6 {
+  font-size: 22px;
+  line-height: 27px;
+  text-align: right;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+p {
+  margin-bottom: 20px;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+pre {
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+table {
+  margin-bottom: 20px;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+.language-none {
+  font-family: "Courier New", Courier, monospace; 
+  font-size: 12px;
+}
+
+ol,
+ul {
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.pagebreak {
+  page-break-after: always;
+}
+
+.booktitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 44px;
+  line-height: 30px;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 100px;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+.booksubtitle {
+  font-size: 22px;
+  line-height: 27px;
+  text-align: right;
+  margin-top: 18px;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+}
+
+.graphic {
+  margin-top: 30px;
+  margin-right: 0.5in;
+}
+
+.logo {
+  margin-top: 700px;
+  margin-right: 0.5in;
+}
+
+.copyright {
+  font-style: italic;
+  margin-left: 0.5in;
+  margin-right: 0.5in;
+  page-break-before: always;
+}
+
+@media print {
+  body 
+  * {
+    color: #000 !important;
+  }
+  @page {
+    margin: 0.75in;
+  }
+  @page :first {
+    size:8.5in 11in;
+    margin-top: 4.0in;
+    margin-left: 4.25in;
+    orphans:4; widows:2;
+  }
+  h1 {
+    border-bottom: none;
+  }
+  h2 {
+    page-break-before: always;
+  }
+}

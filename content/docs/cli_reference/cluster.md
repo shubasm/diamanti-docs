@@ -1,8 +1,3 @@
-+++
-title = "Cluster commands"
-description = ""
-weight = 2
-+++
 ## dctl cluster
 
 Manage clusters, including creating and destroying clusters. Use also to add and remove nodes in a cluster, as well as display the status 
@@ -49,46 +44,84 @@ Create a cluster.
 ### Options
 
 ```
-  --virtual-ip <cluster-virtual-ip>,                 (Required) The IP address
-     --vip <cluster-virtual-ip>                      for managing the cluster.
-  --poddns-domain <cluster-name>[.company.domain],   (Required) The domain name
-     --poddns <cluster-name>[.company.domain]        for the SkyDNS service for
-                                                     all containers deployed 
-                                                     in the cluster. The 
-                                                     default is domain.com.
-  --storage-vlan <vlan-id>, --svlan <vlan-id>        (Required) The virtual 
-                                                     LAN ID (for intra-cluster 
-                                                     storage communication, 
-                                                     with jumbo frames 
-                                                     enabled). The default 
-                                                     value is 0 (disabled).
-  --admin-password <password>, -p <password>         The password for the admin
-                                                     user. If a password is not
-                                                     specified in the command 
-                                                     line, the command prompts 
-                                                     for a password. The 
-                                                     password needs to meet the
-                                                     Unicode standard, and must
-                                                     consist of at least 8 
-                                                     characters, including at 
-                                                     least one special 
-                                                     character, one upper and 
-                                                     lowercase character, and 
-                                                     one number.
-  --ca-cert <path-to-certificate>                    The certificate authority 
-                                                     for the cluster.
-  --tls-cert <path-to-certificate>                   The TLS certificate for 
-                                                     the cluster.
-  --tls-key <path-to-key-file>                       The TLS private key for 
-                                                     the cluster.
-  --multizone value                                  Enable or disable 
-                                                     multizone support.
+  --virtual-ip <cluster-virtual-ip>,                (Required) The virtual IP 
+     --vip <cluster-virtual-ip>                     address (in the same subnet
+                                                    as the cluster nodes) in
+                                                    cases when the VIP is 
+                                                    managed locally by the 
+                                                    cluster without an external
+                                                    load balancer. When using 
+                                                    an external load balancer, 
+                                                    the IP address of the 
+                                                    external load balancer or 
+                                                    the DNS name to access the 
+                                                    cluster API servers.
+  --poddns-domain <cluster-name>[.company.domain],  (Required) The domain name
+     --poddns <cluster-name>[.company.domain]       for the SkyDNS service for
+                                                    all containers deployed 
+                                                    in the cluster. The 
+                                                    default is domain.com.
+  --masters <node-name>[,<node-name>,...]           The list of nodes to run
+                                                    master services co-located
+                                                    with etcd.
 ```
 
-### Example
+```
+  --storage-vlan <vlan-id>, --svlan <vlan-id>       (Required) The virtual 
+                                                    LAN ID (for intra-cluster 
+                                                    storage communication, 
+                                                    with jumbo frames 
+                                                    enabled). The default 
+                                                    value is 0 (disabled).
+                                                    Note that this option is 
+                                                    not required for Diamanti
+                                                    Virtual Clusters (DVX).
+  --vip-mgmt value                                  Specifies whether to use an
+                                                    external load balancer
+                                                    (non-stretched clusters) 
+                                                    for cluster VIP management 
+                                                    or whether to manage the
+                                                    VIP locally by the cluster
+                                                    apiserver (stretched 
+                                                    clusters). Specify external
+                                                    or local respectively.
+  --admin-password <password>, -p <password>        The password for the admin
+                                                    user. If a password is not
+                                                    specified in the command 
+                                                    line, the command prompts 
+                                                    for a password. The 
+                                                    password needs to meet the
+                                                    Unicode standard, and must
+                                                    consist of at least 8 
+                                                    characters, including at 
+                                                    least one special 
+                                                    character, one upper and 
+                                                    lowercase character, and 
+                                                    one number.
+  --ca-cert <path-to-certificate>                   The certificate authority 
+                                                    for the cluster.
+  --tls-cert <path-to-certificate>                  The TLS certificate for 
+                                                    the cluster.
+  --tls-key <path-to-key-file>                      The TLS private key for 
+                                                    the cluster.
+  --multizone value                                 Enable or disable 
+                                                    multi-zone support.
+```
 
-    dctl cluster create mycluster node-01,node-02,node-03 --vip 192.168.30.10 
-       --poddns mycluster.diamanti.com --storage-vlan 2
+
+### Examples
+
+```
+// Create a cluster using a local balancer 
+dctl cluster create mycluster node01,node02,node03,node04,node05 
+   --vip 192.168.30.10 --poddns mycluster.diamanti.com 
+   --masters node01,node02,node03 ---storage-vlan 2 --vip-mgmt local
+   
+// Create a cluster using an external load balancer 
+dctl cluster create mycluster node01,node02,node03,node04,node05 
+   --vip 10.10.33.120 --poddns mycluster.diamanti.com 
+   --masters node01,node02,node03 ---storage-vlan 2 --vip-mgmt external
+```
 
 ## dctl cluster add
 
@@ -101,7 +134,7 @@ Add one or more nodes to the cluster.
 
 ### Example
 
-    dctl cluster add node-04
+    dctl cluster add node04
 
 ## dctl cluster update certificate
 
@@ -186,7 +219,7 @@ Remove one or more nodes from the cluster.
 
 ### Example
 
-    dctl cluster remove node-04
+    dctl cluster remove node04
 
 ## dctl cluster etcd-add
 
@@ -199,7 +232,7 @@ Add one or more nodes to the etcd cluster.
 
 ### Example
 
-    dctl cluster etcd-add node-04
+    dctl cluster etcd-add node04
 
 ## dctl cluster etcd-remove
 
@@ -218,7 +251,7 @@ Remove one or more nodes from the etcd cluster.
 
 ### Examples
 
-    dctl cluster etcd-remove node-04
+    dctl cluster etcd-remove node04
 
 ## dctl cluster configure
 
@@ -299,7 +332,6 @@ Display the status of the cluster.
   UUID                  The universally unique identifier of the cluster.
   State                 The state of the cluster.
   Version               The Diamanti software version.
-  Master                The name of the cluster master.
   Etcd State            The state of the quorum, from among the following:
                           - Healthy — The number of healthy quorum members is 
                                greater than the quorum size and the number of 
@@ -310,13 +342,17 @@ Display the status of the cluster.
                           - NoFaultTolerance — The number of healthy quorum 
                                members is equal to the quorum size.
   Virtual IP            The cluster virtual IP address.
-  Storage VLAN          The virtual LAN ID.
+  Storage VLAN          The virtual LAN ID. Note that this is not displayed
+                        for Diamanti Virtual Clusters (DVX).
   Pod DNS Domain        The DNS server for the pod.
-  
+```
+
+```  
   Nodes status
   Name                  The DNS (short) name of the node.
   Node-Status           The status of the node.
   K8S-Status            The Kubernetes status of the node.
+  Role                  The role of the node, either master or worker.
   Millicores            The used and available physical CPU cores (times 1000).
   Memory                The used and available memory.
   Storage               The used and available storage.
@@ -326,7 +362,7 @@ Display the status of the cluster.
                         interfaces.
   Bandwidth             The used and available bandwidth.
   Storage Controllers   The number of used and available storage controllers.
-  (Total, Remote)
+  (Local, Remote)
   Labels                The labels associated with the node.
 ```
 
@@ -341,29 +377,29 @@ Report and save information about the cluster.
 ### Options
 
 ```
-  --quiet, -q                         Run the command in quiet mode.
-  --save, -s                          Save the cluster and certificate 
-                                      information, storing the 
-                                      information in the .dctl.d and 
-                                      .kube directories of the logged-in 
-                                      user on the local machine. In 
-                                      addition, the certificate authority 
-                                      is embedded in the ~/.dctl.d/config 
-                                      and ~/.kube/config files.
-  --insecure,                         Skip verification of server certificate.
-     --insecure-skip-tls-verify, -i   This indicates that user-supplied
-                                      certificates were used to create the 
-                                      cluster and the certificate authority 
-                                      (ca.crt) is not available for the user. 
-                                      This allows the user to configure dctl 
-                                      to ignore server certificate validation 
-                                      when issuing the dctl login command.
-  --proxy, -p                         Configure proxy mode for Kubernetes.
-  --assume-yes, -y                    Assume yes for the confirmation prompt.
-  --ca-cert                           Display the CA certificate used by dctl.
-  --k8s-ca-cert                       Display the CA certificate used by 
-                                      kubectl.
-   --all-servers                      Display a list of all cluster endpoints.
+  --quiet, -q                       Run the command in quiet mode.
+  --save, -s                        Save the cluster and certificate 
+                                    information, storing the 
+                                    information in the .dctl.d and 
+                                    .kube directories of the logged-in 
+                                    user on the local machine. In 
+                                    addition, the certificate authority 
+                                    is embedded in the ~/.dctl.d/config 
+                                    and ~/.kube/config files.
+  --insecure,                       Skip verification of server certificate.
+     --insecure-skip-tls-verify,    This indicates that user-supplied
+     -i                             certificates were used to create the 
+                                    cluster and the certificate authority 
+                                    (ca.crt) is not available for the user. 
+                                    This allows the user to configure dctl 
+                                    to ignore server certificate validation 
+                                    when issuing the dctl login command.
+  --proxy, -p                       Configure proxy mode for Kubernetes.
+  --assume-yes, -y                  Assume yes for the confirmation prompt.
+  --ca-cert                         Display the CA certificate used by dctl.
+  --k8s-ca-cert                     Display the CA certificate used by 
+                                    kubectl.
+   --all-servers                    Display a list of all cluster endpoints.
 ```
 
 **Note:**

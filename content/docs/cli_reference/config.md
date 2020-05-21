@@ -1,11 +1,3 @@
-+++
-title = "Configuration commands"
-description = ""
-weight = 3
-+++
-
-<a name="config"></a>
-
 ## dctl config
 
 Generate cluster configuration files.
@@ -72,27 +64,3 @@ command.
 
     dctl config set-cluster mycluster --api-version v1 --virtual-ip 192.168.30.10 
        --ca /etc/diamanti/certs/ca.crt
-
-<a name="drive"></a>
-## dctl drive
-
-Manage drives, including listing and formatting drives.
-
-### Syntax
-
-    dctl [global options] drive <command> [command options] [arguments...]
-
-### Commands
-
-```
-  get           Display information about a specific drive.
-  list          Display a summary of all drives in a cluster (default) or 
-                a specific node.
-  format        Format all drives on a specific node.
-```
-
-### Options
-
-```
-  --help, -h    Show help
-```
